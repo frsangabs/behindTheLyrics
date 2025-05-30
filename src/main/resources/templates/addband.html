@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>BTL Adicionar Banda</title>
+</head>
+<body>
+    <a th:href="@{/}">voltar</a>
+
+    <h2>Adicionar Nova Banda</h2>
+
+
+    <form th:action="@{/addband}" method="post" th:object="${bandas}">
+        Nome da banda: <input type="text" th:field="*{nome}"><br>
+        História: <input type="text" th:field="*{lore}"><br>
+        <input type="submit" value="Adicionar Banda">
+    </form>
+
+        
+</body>
+</html>
