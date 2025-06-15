@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>BTL Adicionar Banda</title>
+    <title>BTL Adicionar Álbum</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" th:href="@{/css/addStyle.css}">
 </head>
@@ -15,19 +15,26 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/bandas}"><i class="fa fa-users"></i> Voltar</a>
+                    <a class="nav-link" th:href="@{/albuns}"><i class="fa fa-users"></i> Voltar</a>
                 </li>
         </div>
     </nav>
 
     <h2 th:text="${nomePag}"></h2>
-    <form th:action="@{${link}}" method="post" th:object="${banda}">
-        Nome da banda: <input type="text" th:field="*{nome}"><br>
-        História: <input type="text" th:field="*{lore}"><br>
+    <form th:action="@{${link}}" method="post" th:object="${albuns}">
+        Nome do Álbum: <input type="text" th:field="*{nome}"><br>
+        Nome da Banda:
+        <select id="select-banda" th:field="*{id_banda}" >
+        <option th:each="banda : ${bandas}" 
+            th:value="${banda.id}" 
+            th:text="${banda.nome}"></option>
+        </select><br>
+        Ano de Lançamento: <input type="text" th:field="*{ano_lancamento}"><br>
         URL da imagem: <input type="text" th:field="*{imagem_url}" id="imagemUrl"><br>
         <img id="previewImagem" src="#" alt="Prévia da Imagem" style="display:none; max-height: 200px; margin-top: 10px;"><br>
-    <input type="submit" th:value="${valorBtn} ?: 'Adicionar Banda'">
+        <input type="submit" th:value="${valorBtn} ?: 'Adicionar Album'">
     </form>
+    
 
     <script>
         const inputUrl = document.getElementById('imagemUrl');

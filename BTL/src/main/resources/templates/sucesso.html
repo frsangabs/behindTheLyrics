@@ -2,8 +2,34 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>SUCESSO</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/sucesso.css}">
+
 </head>
 <body>
-    <h1>Informações inseridas com sucesso!!</h1>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <a class="navbar-brand" th:href="@{/}">
+      behindTheLyrics
+    </a>
+
+
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/musicas}"><i class="fa fa-music"></i> Músicas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/bandas}"><i class="fa fa-users"></i> Bandas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/albuns}"><i class="fa fa-folder"></i> Álbuns</a>
+        </li>
+      </ul>
+    </div>
+
+    </nav>
+
+    <h1>Informações inseridas com sucesso!!<br> Retorne no menu de navegação.</h1>
 </body>
 </html>

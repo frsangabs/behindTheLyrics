@@ -1,20 +1,23 @@
 CREATE TABLE IF NOT EXISTS bandas (
-    id SERIAL PRIMARY KEY,
+    id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
-    lore TEXT
+    lore TEXT,
+    imagem_url TEXT
 );
 
 CREATE TABLE IF NOT EXISTS albuns (
-    id SERIAL PRIMARY KEY,
+    id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
-    id_banda INT NOT NULL REFERENCES bandas(id) ON DELETE CASCADE,
-    ano_lancamento INT
+    ano_lancamento INT,
+    id_banda INT REFERENCES bandas(id) ON DELETE CASCADE,
+    imagem_url TEXT
 );
 
 CREATE TABLE IF NOT EXISTS musicas (
-    id SERIAL PRIMARY KEY,
+    id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     titulo VARCHAR(100) NOT NULL,
-    id_banda INT NOT NULL REFERENCES bandas(id) ON DELETE CASCADE,
-    id_album INT REFERENCES albuns(id) ON DELETE SET NULL,
-    ano_lancamento INT
+    ano_lancamento INT,
+    loreMsc TEXT,
+    id_banda INT REFERENCES bandas(id) ON DELETE CASCADE,
+    id_album INT REFERENCES albuns(id) ON DELETE SET NULL
 );

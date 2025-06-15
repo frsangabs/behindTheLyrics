@@ -2,10 +2,49 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>BTL Bandas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/pagBandas.css}">
 </head>
 <body>
-    <h1>Bandas</h1>
-    <a th:href="@{/}">Home</a>
-    <p><a th:href="@{/addband}">Adicionar bandas</a></p>
+    <!-- <a th:href="@{/}">Home</a>
+    <p><a th:href="@{/addband}">Adicionar bandas</a></p> -->
+
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <a class="navbar-brand" th:href="@{/}">
+            behindTheLyrics
+        </a>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/albuns}"><i class="fa fa-folder"></i> Álbuns</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/musicas}"><i class="fa fa-music"></i> Músicas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/addband}"><i class="fa fa-users"></i> Adicionar Banda</a>
+                </li>
+            </ul>
+        </div>
+</nav>
+
+    <h2>Lista de Bandas</h2>
+    <div class="container">
+        <div class="band-card" th:each="banda : ${bandas}">
+            <a th:href="@{'/bandas/' + ${banda.id}}" style="text-decoration: none; color: inherit;">
+            <img th:src="@{${banda.imagem_url}}" alt="Imagem da Banda">
+            <h3 th:text="${banda.nome}">Nome da Banda</h3>
+            </a>
+        </div>
+    </div>  
+        <!-- <div class="card" th:each="banda : ${bandas}">
+            <a th:href="@{'/bandas/' + ${banda.id}}" style="text-decoration: none; color: inherit;">
+                <h3 th:text="${banda.nome}"></h3>
+                <p><span th:text="${banda.id}"></span></p>
+                <p><span th:text="${banda.lore}"></span></p>
+            </a> 
+            
+    </div> -->
 </body>
 </html>

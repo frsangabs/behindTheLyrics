@@ -2,17 +2,58 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>BTL Adicionar Música</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/addStyle.css}">
+
 </head>
 <body>
-    <a th:href="@{/}">voltar</a>
+    
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <a class="navbar-brand" th:href="@{/}">
+            behindTheLyrics
+        </a>
 
-    <h2>Adicionar Nova Música</h2>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/musicas}"><i class="fa fa-users"></i> Voltar</a>
+                </li>
+        </div>
+    </nav>
 
 
-    <form th:action="@{/addmsc}" method="post" th:object="${musicas}">
-        Título: <input type="text" th:field="*{titulo}"><br>
-        Banda: 
+    <h2 th:text="${nomePag}"></h2>
 
-        
+    <form th:action="@{${link}}" method="post" th:object="${musicas}">
+    Título: <input type="text" th:field="*{titulo}" required><br>
+        Banda:
+        <select id="select-banda" th:field="*{id_banda}" >
+        <option th:each="banda : ${bandas}" 
+            th:value="${banda.id}" 
+            th:text="${banda.nome}"></option>
+        </select><br>
+        Álbum:
+        <select id="select-album" th:field="*{id_album}">
+        <option value="">Sem Álbum</option>
+        <option th:each="album : ${albuns}" 
+            th:value="${album.id}" 
+            th:text="${album.nome}"></option>
+</select><br>
+    Ano de Lançamento: <input type="number" th:field="*{ano_lancamento}"><br>
+    História da música: <input type="text" th:field="*{loreMsc}"><br>
+    <input type="submit" id="btn-adicionar" th:value="${valorBtn} ?: 'Adicionar Música'">
+
+    <script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const selectBanda = document.getElementById('select-banda');
+        const botaoAdicionar = document.getElementById('btn-adicionar');
+
+        if (selectBanda.options.length === 0) {
+            botaoAdicionar.disabled = true;
+            botaoAdicionar.value = "Cadastre uma banda primeiro";
+        }
+    });
+    </script>
+
 </body>
 </html>

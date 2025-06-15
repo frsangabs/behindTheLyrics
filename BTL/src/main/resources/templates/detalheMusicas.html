@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes da Música</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/detalheMusica.css}">
+    <!-- <style>
+        body, html {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        .header {
+            position: relative;
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            color: white;
+            background-blend-mode: darken;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        .album-card {
+            flex: 1 1 300px;
+            max-width: 300px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .album-card img {
+            width: 100%;
+            height: auto;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .album-card .album-info {
+            padding: 15px;
+        }
+
+        .musica-info {
+            flex: 2 1 400px;
+            background-color: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .musica-info h2 {
+            margin-top: 0;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .album-card, .musica-info {
+                max-width: 100%;
+            }
+        }
+    </style> -->
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <a class="navbar-brand" th:href="@{/}">
+        behindTheLyrics
+        </a>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+            <a class="nav-link" th:href="@{/musicas}"><i class="fa fa-music"></i>Voltar</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" th:href="@{'/musicas/editar/' + ${musicas.id}}"><i class="fa fa-users"></i>Editar Música</a>
+            </li>
+            <li class="nav-item">
+                <form th:action="@{'/musicas/deletar/' + ${musicas.id}}" method="post" id="deleteForm">
+                    <a href="#" class="nav-link" onclick="
+                        if (confirm('Tem certeza que deseja deletar esta música?')) {
+                            document.getElementById('deleteForm').submit();
+                        }
+                        return false;">
+                        <i class="fa fa-folder"></i> Deletar Música
+                    </a>
+                </form>
+            </li>
+        </ul>
+        </div>
+    </nav>
+
+    <!-- HEADER COM IMAGEM DA BANDA -->
+    <div class="header" th:style="'background-image: url(' + ${imagem_banda} + ')'">
+        <h1 th:text="${nome_banda}">Nome da Banda</h1>
+    </div>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div class="container">
+
+        <!-- CARD DO ÁLBUM (se existir) -->
+        <div class="album-card" th:if="${nome_album != null}">
+            <img th:src="${imagem_album}" alt="Imagem do Álbum">
+            <div class="album-info">
+                <h3 th:text="${nome_album}">Nome do Álbum</h3>
+            </div>
+        </div>
+
+        <!-- INFORMAÇÕES DA MÚSICA -->
+        <div class="musica-info">
+            <h2 th:text="${musicas.titulo}">Título da Música</h2>
+            <p><strong>Ano de Lançamento:</strong> <span th:text="${musicas.ano_lancamento}">2020</span></p>
+            <p><strong>Descrição:</strong></p>
+            <p th:text="${musicas.loreMsc}">Lorem ipsum dolor sit amet...</p>
+        </div>
+    </div>
+
+</body>
+</html>
