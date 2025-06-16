@@ -2,9 +2,60 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>BTL Músicas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/pagmusicas.css}">
 </head>
 <body>
-    <h1>Músicas</h1>
-    <a th:href="@{/}">voltar</a>
+
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <a class="navbar-brand" th:href="@{/}">
+            behindTheLyrics
+        </a>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/bandas}"><i class="fa fa-users"></i> Bandas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/albuns}"><i class="fa fa-folder"></i> Álbuns</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/addmsc}"><i class="fa fa-users"></i> Adicionar música</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="container mt-3">
+        <h2>Lista de Músicas</h2>
+        <form method="get" action="#" class="form-inline mb-3">
+            <label for="bandaId" class="mr-2">Filtrar por Banda:</label>
+            <select name="bandaId" id="bandaId" class="form-control mr-2" onchange="this.form.submit()">
+                <option th:value="''" th:selected="${bandaSelecionada == null}">Todas as Bandas</option>
+                <option th:each="banda : ${bandas}"
+                        th:value="${banda.id}"
+                        th:text="${banda.nome}"
+                        th:selected="${banda.id == bandaSelecionada}">
+                </option>
+            </select>
+            <noscript><input type="submit" value="Filtrar" class="btn btn-primary"></noscript>
+        </form>
+    </div>
+        <div class="container">
+        <div class="card" th:each="musica : ${musicas}">
+            <a th:href="@{'/musicas/' + ${musica.id}}">
+            <h3 th:text="${musica.titulo}"></h3>
+            <p><span th:text="${musica.nomeBanda}"></span></p>
+            </a>
+
+            <!-- <a th:href="@{'/musicas/editar/' + ${musica.id}}">Editar</a>
+
+            <form th:action="@{'/musicas/deletar/' + ${musica.id}}" method="post">
+                <input type="submit" value="Apagar">
+            </form> -->
+        </div>
+    </div>
 </body>
 </html>

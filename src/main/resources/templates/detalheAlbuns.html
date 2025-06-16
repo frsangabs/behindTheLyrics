@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="'Detalhes do ÁLBUM - ' + ${banda.nome}">Detalhes</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/theme.css}">
+
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <a class="navbar-brand" th:href="@{/}">
+        behindTheLyrics
+        </a>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                <a class="nav-link" th:href="@{/albuns}"><i class="fa fa-music"></i>Voltar</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" th:href="@{'/albuns/editar/' + ${album.id}}"><i class="fa fa-users"></i>Editar Álbum</a>
+                </li>
+                <li class="nav-item">
+                    <form th:action="@{'/albuns/deletar/' + ${album.id}}" method="post" id="deleteForm">
+                        <a href="#" class="nav-link" onclick="
+                            if (confirm('Tem certeza que deseja deletar este álbum?')) {
+                                document.getElementById('deleteForm').submit();
+                            }
+                            return false;">
+                            <i class="fa fa-folder"></i> Deletar Álbum
+                        </a>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+        <div class="container mt-4">
+            <!-- Imagem do Álbum -->
+            <div class="album-banner" th:style="'background-image: url(' + ${album.imagem_url} + ')'">
+            </div>
+            <!-- Informações do Álbum -->
+            <h2 class="mt-3" th:text="${album.nome}"></h2>
+            <span th:text="${album.ano_lancamento}"></span>
+            <span th:text="${banda.nome}"></span>
+
+            <!-- Lista de Músicas -->
+            <h3 class="mt-4">Músicas</h3>
+            <ul class="list-group">
+                <li class="list-group-item" th:each="musica : ${musicas}" th:text="${musica.titulo}">Título da música</li>
+            </ul>
+        </div>
+
+</body>

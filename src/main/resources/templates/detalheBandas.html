@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="'Detalhes da Banda - ' + ${banda.nome}">Detalhes</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/detalheBanda.css}">
+    <script th:src="@{/js/banda.js}"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <a class="navbar-brand" th:href="@{/}">
+        behindTheLyrics
+        </a>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+            <a class="nav-link" th:href="@{/bandas}"><i class="fa fa-music"></i>Voltar</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" th:href="@{'/bandas/editar/' + ${banda.id}}"><i class="fa fa-users"></i>Editar Banda</a>
+            </li>
+            <li class="nav-item">
+                <form th:action="@{'/bandas/deletar/' + ${banda.id}}" method="post" id="deleteForm">
+                    <a href="#" class="nav-link" onclick="
+                        if (confirm('Tem certeza que deseja deletar esta banda? Todas suas músicas e álbuns serão deletados.')) {
+                            document.getElementById('deleteForm').submit();
+                        }
+                        return false;">
+                        <i class="fa fa-folder"></i> Deletar Banda
+                    </a>
+                </form>
+            </li>
+        </ul>
+        </div>
+    </nav>
+
+    <div class="collapsing-header" th:style="'background-image: url(' + ${banda.imagem_url} + ')'">
+        <h1 th:text="${banda.nome}"></h1>
+    </div>
+    <div class="container">
+
+
+        <p><strong>What's behind:</strong> <span th:text="${banda.lore}"></span></p>
+
+        <h3>Álbuns</h3>
+        <div class="album-carousel-wrapper">
+            <button class="carousel-btn" onclick="scrollCarousel(-1)">&#10094;</button>
+            
+            <div class="album-carousel-inner" id="carouselInner">
+                <div class="album-card" th:each="album : ${albuns}">
+                    <img th:src="@{${album.imagem_url}}" alt="Capa do Álbum">
+                    <p th:text="${album.nome}">Nome do Álbum</p>
+                </div>
+            </div>
+
+            <button class="carousel-btn" onclick="scrollCarousel(1)">&#10095;</button>
+        </div>
+
+
+        <h3>Músicas</h3>
+        <div class="music-list">
+            <div class="music-card" th:each="musica : ${musicas}">
+                <span th:text="${musica.titulo}"></span>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</body>
+</html>

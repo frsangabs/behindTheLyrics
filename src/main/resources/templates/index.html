@@ -1,28 +1,61 @@
 <!DOCTYPE html>
-<html lang="PT-br" xmlns:th="http://www.thymeleaf.org">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BTL Home</title>
-    <link rel="stylesheet" th:href="@{css/index.css}">
-    <script th:src="@{js/main.js}"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Behind the Lyrics</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" th:href="@{/css/index.css}">
 </head>
 <body>
 
-    <h1>Behind The Lyrics</h1>
+<!-- NAVBAR -->
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <a class="navbar-brand" th:href="@{/}">
+      behindTheLyrics
+    </a>
 
-    <ul>
-        <li>
-            <a th:href="@{/musicas}">Músicas</a>
-        </li>
-        <li>
-            <a th:href="@{/bandas}">Bandas</a>
-        </li>
-        <li>
-            <a th:href="@{/addmusica}">Adicionar músicas</a>
-        </li>
 
-    </ul>
-    
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/musicas}"><i class="fa fa-music"></i> Músicas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/bandas}"><i class="fa fa-users"></i> Bandas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/albuns}"><i class="fa fa-folder"></i> Álbuns</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+
+  
+    <section>
+        <h2>Top bandas</h2>
+        <div class="band-list">
+            <div th:each="banda : ${bandas}" class="band-card">
+                <img th:src="${banda.imagem_url}" alt="Imagem da banda" />
+                <h3 th:text="${banda.nome}">Nome da banda</h3>
+            </div>
+        </div>
+    </section>
+
+    <div class="center-text">
+        Descubra o que está por trás do que você escuta diariamente
+    </div>
+
+    <section>
+        <h2>Últimas tracks adicionadas</h2>
+        <div class="music-list">
+            <div th:each="musica : ${musicas}" class="music-card">
+                <h3 th:text="${musica.titulo}">Título da música</h3>
+            </div>
+        </div>
+    </section>
+
 </body>
 </html>

@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  background-color: #1e1e2f;
+  color: #ffffff;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #2e2e40 !important;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  color: #d29eff !important;
+}
+
+.nav-link {
+  color: #ffffff !important;
+  font-weight: 500;
+  transition: color 0.2s ease-in-out;
+}
+
+.nav-link:hover {
+  color: #d29eff !important;
+}
+
+/* Título da página */
+h2 {
+  text-align: center;
+  margin: 2rem auto 1rem auto;
+  font-size: 2rem;
+  color: #ffffff;
+  font-weight: 600;
+  border-bottom: 2px solid #4e4e6a;
+  padding-bottom: 0.5rem;
+  max-width: 1000px;
+}
+
+/* Container principal */
+.container {
+  max-width: 1000px;
+  margin: 0 auto 2rem auto;
+  padding: 0 1rem;
+}
+
+/* Cards de música */
+.card {
+  height: 60px; /* Altura menor */
+  padding: 0.25rem 1rem;
+  border: 1px solid #4e4e6a;
+  border-bottom: none;
+  border-radius: 0;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #2e2e40;
+  box-shadow: none;
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.card:last-child {
+  border-bottom: 1px solid #4e4e6a;
+}
+
+.card:hover {
+  background-color: #3e3e55;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+
+/* Título da música */
+.card h3 {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1;
+  color: #d29eff;
+  font-weight: 600;
+}
+
+/* Nome da banda */
+.card p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1;
+  color: #bbbbbb;
+  font-weight: 400;
+}
+
+/* Link ocupa o bloco todo */
+.card a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  padding: 0;
+}
+
+/* Formulário de filtro */
+form.form-inline {
+  max-width: 1000px;
+  margin: 1rem auto 2rem auto;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+form.form-inline label {
+  color: #d29eff;
+  font-weight: 600;
+}
+
+form.form-inline select {
+  padding: 0.3rem 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #4e4e6a;
+  background-color: #2e2e40;
+  color: #ffffff;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+form.form-inline select:hover,
+form.form-inline select:focus {
+  background-color: #3e3e55;
+  border-color: #d29eff;
+  outline: none;
+}

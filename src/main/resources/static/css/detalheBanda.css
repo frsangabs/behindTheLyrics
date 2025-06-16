@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+:root {
+  --bg-dark: #1e1e2f;
+  --bg-mid: #2e2e40;
+  --accent: #d29eff;
+  --text-light: #eee;
+  --text-muted: #aaa;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  font-family: 'Poppins', sans-serif;
+  overscroll-behavior-y: contain;
+}
+
+/* Lore/história */
+p strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+}
+
+p span {
+  display: block;
+  margin: 0.5rem auto 2rem; /* centraliza horizontalmente */
+  padding: 1rem 1.5rem;
+  border: 2px solid var(--accent);
+  border-radius: 8px;
+  max-width: 900px;
+  line-height: 1.5;
+  background-color: var(--bg-mid);
+  color: var(--text-light);
+  box-shadow: 0 2px 8px rgba(210, 158, 255, 0.1);
+  text-align: center; /* opcional: centraliza o texto */
+}
+
+/* Header da imagem */
+.collapsing-header {
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  transition: height 0.3s ease;
+}
+
+.collapsing-header.collapsed {
+  height: 80px;
+}
+
+.collapsing-header::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent);
+}
+
+.collapsing-header h1 {
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  color: white;
+  font-size: 2.2rem;
+  z-index: 2;
+  font-weight: 600;
+}
+
+/* Títulos */
+h3 {
+  text-align: center;
+  margin-top: 2rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Carrossel de álbuns */
+.album-carousel-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  justify-content: center;
+}
+
+.album-carousel-inner {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 1rem;
+  flex: 1;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.album-carousel-inner::-webkit-scrollbar {
+  display: none;
+}
+
+.album-card {
+  width: 180px;               /* largura fixa */
+  height: 250px;              /* altura fixa */
+  flex-shrink: 0;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  background-color: var(--bg-mid);
+  transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.album-card:hover {
+  transform: scale(1.05);
+}
+
+.album-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.album-card p {
+  padding: 0.5rem;
+  font-weight: bold;
+  color: var(--text-light);
+  font-size: 0.95rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* Lista de músicas */
+.music-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  max-width: 900px;
+  margin: auto;
+}
+
+.music-card {
+  border: 1px solid var(--accent);
+  padding: 0.75rem;
+  border-radius: 5px;
+  background-color: var(--bg-mid);
+  color: var(--text-light);
+}
+
+/* Botões do carrossel */
+.carousel-btn {
+  background-color: var(--accent);
+  color: var(--bg-dark);
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+  user-select: none;
+}
+
+.carousel-btn:hover {
+  background-color: #b57aff;
+}
+
+/* Navbar Bootstrap customizada */
+.navbar-dark .navbar-nav .nav-link {
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: var(--accent);
+}

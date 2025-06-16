@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>BTL Albuns</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/cardAlbum.css}">
+
+</head>
+<body>
+    <!-- <h1>Albuns</h1>
+    <a th:href="@{/}">Home</a>
+    <p><a th:href="@{/addalbum}">Adicionar albuns</a></p> -->
+
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <a class="navbar-brand" th:href="@{/}">
+            behindTheLyrics
+        </a>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/musicas}"><i class="fa fa-users"></i> Músicas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/bandas}"><i class="fa fa-folder"></i> Bandas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/addalbum}"><i class="fa fa-users"></i> Adicionar Álbum</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <h2>Lista de Álbuns</h2>
+    <div class="container">
+        <div class="card" th:each="album : ${albuns}">
+            <a th:href="@{'/albuns/' + ${album.id}}">
+                <img th:src="@{${album.imagem_url}}" alt="Imagem do Álbum" />
+            </a>
+            <div class="card-info">
+                <p th:text="${album.nome}" th:title="${album.nome}"></p>
+                <span th:text="${album.nome_banda}"></span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

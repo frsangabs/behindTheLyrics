@@ -1,7 +1,118 @@
-ul{
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    gap: 15px;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  background-color: #1e1e2f;
+  color: #ffffff;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #2e2e40 !important;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  color: #d29eff !important;
+}
+
+.nav-link {
+  color: #ffffff !important;
+  font-weight: 500;
+  transition: color 0.2s ease-in-out;
+}
+
+.nav-link:hover {
+  color: #d29eff !important;
+}
+
+/* Texto centralizado */
+.center-text {
+  text-align: center;
+  font-size: 1.8rem;
+  margin: 2rem auto;
+  max-width: 90%;
+  color: #d29eff;
+}
+
+/* Estrutura das seções */
+section {
+  margin: 2rem auto;
+  padding: 1rem;
+  max-width: 1000px;
+}
+
+/* Título das seções */
+section h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+  font-weight: 600;
+  border-bottom: 2px solid #4e4e6a;
+  padding-bottom: 0.5rem;
+}
+
+/* Lista de bandas */
+.band-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* Card da banda */
+.band-card {
+  width: 180px;
+  height: 230px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #2e2e40;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease-in-out;
+}
+
+.band-card:hover {
+  transform: scale(1.05);
+}
+
+.band-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  background-color: #000;
+}
+
+.band-card h3 {
+  margin-top: 0.8rem;
+  font-size: 1rem;
+  text-align: center;
+  padding: 0 0.5rem;
+  color: #d29eff;
+}
+
+/* Lista de músicas */
+.music-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Card da música */
+.music-card {
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: #2e2e40;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.25);
+}
+
+.music-card h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #ffffff;
 }
